@@ -18,7 +18,8 @@ namespace superHeroAPI.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
+        [HttpGet("weather2")] // (Name = "GetWeatherForecast")]
+         
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
