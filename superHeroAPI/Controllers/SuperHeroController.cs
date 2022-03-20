@@ -15,11 +15,34 @@ namespace superHeroAPI.Controllers
                     Name = "Spider Man",
                     FirstName = "Peter",
                     LastName =  "Parker",
-                    Place = "New York City"}
+                    Place = "New York City"},
+                new SuperHero{
+                    Id = 2,
+                    Name = "IronMan",
+                    FirstName = "Tony",
+                    LastName =  "Stark",
+                    Place = "LonG Island"}
             };
         [HttpGet]
         public async Task<ActionResult<List<SuperHero>>> Get()
         {
+            return Ok(heros);
+        }
+
+        [HttpGet("{id}")]
+
+        public async Task<ActionResult<SuperHero>> Get(int id )
+        {
+            var hero = heros.Find(h => h.Id == id);
+            if(hero == null) return BadRequest("Hero not found");
+            return Ok(hero);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<List<SuperHero>>> AddHero( SuperHero hero)
+        {
+            
+            heros.Add(hero);
             return Ok(heros);
         }
     }
