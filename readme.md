@@ -4,11 +4,11 @@ A REST API : CRUD with a .NET 6 Web API | Entity Framework Core | SQL Server 201
 
 # The OpenAPI spec of the API
 <p align="center">
-  <img src="imgs/Swagger.png" width="'400'">
+  <img src="superHero/imgs/Swagger.png" width="'400'">
  </p>
 
 # DB related to the API 
 
 <p align="center">
-  <img src="imgs/db.png" width="400">
+  <img src="superHero/imgs/db.PNG" width="400">
  </p>
