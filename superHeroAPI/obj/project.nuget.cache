@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "V56ddY6ZtlgUyYQZhaCFJ3qSyS1BQdU9Nx8l4wQaW7sF0HWV6KhIpvtZBGny2lwT+bqRdF2VOJK9MJHYH3USow==",
+  "success": true,
+  "projectFilePath": "D:\\VisualStudio_Projects\\superHeroAPI\\superHeroAPI\\superHeroAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\TAHI Siham\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\TAHI Siham\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\TAHI Siham\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\TAHI Siham\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\TAHI Siham\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\TAHI Siham\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
