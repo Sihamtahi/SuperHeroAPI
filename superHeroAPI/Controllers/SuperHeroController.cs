@@ -8,32 +8,22 @@ namespace superHeroAPI.Controllers
     public class SuperHeroController : ControllerBase
     {
 
-        private static List<SuperHero> heros = new List<SuperHero>
-            {
-                new SuperHero{
-                    Id = 1,
-                    Name = "Spider Man",
-                    FirstName = "Peter",
-                    LastName =  "Parker",
-                    Place = "New York City"},
-                new SuperHero{
-                    Id = 2,
-                    Name = "IronMan",
-                    FirstName = "Tony",
-                    LastName =  "Stark",
-                    Place = "LonG Island"}
-            };
+        private readonly DataContext _context;
+        public SuperHeroController( DataContext context)
+        {
+            _context = context; 
+        }
         [HttpGet]
         public async Task<ActionResult<List<SuperHero>>> Get()
         {
-            return Ok(heros);
+            return Ok(await _context.SuperHeroes.ToListAsync());
         }
 
         [HttpGet("{id}")]
 
         public async Task<ActionResult<SuperHero>> Get(int id )
         {
-            var hero = heros.Find(h => h.Id == id);
+            var hero = await _context.SuperHeroes.FindAsync(id);
             if(hero == null) return BadRequest("Hero not found");
             return Ok(hero);
         }
@@ -41,21 +31,23 @@ namespace superHeroAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<List<SuperHero>>> AddHero( SuperHero hero)
         {
-            
-            heros.Add(hero);
-            return Ok(heros);
+             
+            _context.SuperHeroes.Add(hero);
+            await _context.SaveChangesAsync();
+            return Ok(await _context.SuperHeroes.ToListAsync());
         }
 
         [HttpPut]
         public async Task<ActionResult<List<SuperHero>>> UpdateHero(SuperHero resquest)
         {
-            var hero = heros.Find(h => h.Id == resquest.Id);
-            if (hero == null) return BadRequest("Hero not found");
-            hero.Name = resquest.Name;
-            hero.FirstName = resquest.FirstName;    
-            hero.LastName = resquest.LastName;  
-            hero.Place = resquest.Place;
-            return Ok(heros);
+            var dbHero = await _context.SuperHeroes.FindAsync(resquest.Id);
+            if (dbHero == null) return BadRequest("Hero not found");
+            dbHero.Name = resquest.Name;
+            dbHero.FirstName = resquest.FirstName;
+            dbHero.LastName = resquest.LastName;
+            dbHero.Place = resquest.Place;
+            await _context.SaveChangesAsync();
+            return Ok(await _context.SuperHeroes.ToListAsync()); 
         }
 
 
@@ -63,10 +55,13 @@ namespace superHeroAPI.Controllers
 
         public async Task<ActionResult<List<SuperHero>>> DeleteHero(int id)
         {
-            var hero = heros.Find(h => h.Id == id);
-            if (hero == null) return BadRequest("Hero not found");
-            heros.Remove(hero);
-            return Ok(heros);
+            var dbHero = await _context.SuperHeroes.FindAsync(id);
+            if (dbHero == null) return BadRequest("Hero not found");
+            _context.SuperHeroes.Remove(dbHero);
+
+            await _context.SaveChangesAsync();
+
+            return Ok(await _context.SuperHeroes.ToListAsync());
         }
 
     }
